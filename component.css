@@ -1,0 +1,826 @@
+            /* Google Fonts */
+            
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+            /* Basic Reset */
+            /* General Styling */
+            /* Basic Reset */
+            /* Basic Reset */
+            /* body {
+                margin: 0;
+                font-family: 'Poppins', sans-serif;
+                animation: appear linear;
+                animation-timeline: view();
+                animation-range: entry 0% cover 40%;
+            } */
+            
+            body {
+                margin: 0;
+                font-family: 'Poppins', sans-serif;
+            }
+            
+            body::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, #5C7A8C, #0E3F61, #051926, #050E14);
+                background-image: linear-gradient(to right, #595aad, #24245c, #1d1529, #2c1f40, #3b295a, #5b4381), url('https://source.unsplash.com/1600x900/?nature,abstract');
+                opacity: 0.6;
+                /* Adjust transparency */
+            }
+            
+            .full-page {
+                background: url('lip.jpg');
+                border-radius: 0;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-size: 100% 100%;
+                background-position: center top -30px;
+                padding: 30px;
+                width: 100vw;
+                max-width: 2590px;
+                min-height: 100px;
+                margin: 0;
+                transform: translateY(-60px);
+            }
+            
+            .full-page::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 100px;
+                background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+                pointer-events: none;
+            }
+            
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                max-width: 1500px;
+                padding: 20px;
+            }
+            
+            header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            /* Move logo to the left */
+            
+            .logo {
+                font-size: 2em;
+                color: lightblue;
+                cursor: default;
+                margin-left: auto;
+                margin-right: 1200px;
+            }
+            
+            .logo span {
+                color: #7d2ae8;
+            }
+            /* Hamburger Icon */
+            
+            .hamburger {
+                font-size: 2em;
+                cursor: pointer;
+                display: block;
+                /* Always visible */
+                color: white;
+                top: 70px;
+                position: absolute;
+                right: 50px;
+                z-index: 1000;
+                transition: transform 0.3s ease;
+                /* Ensures it's above other elements */
+            }
+            
+            .navbar {
+                display: none;
+                /* Initially hidden */
+                flex-direction: row;
+                /* Horizontal layout */
+                position: absolute;
+                top: 60px;
+                right: 40px;
+                /* Align to the right */
+                padding: 10px;
+                border-radius: 10px;
+            }
+            
+            .navbar.active {
+                display: flex;
+                justify-content: center;
+                /* Center items */
+                gap: 20px;
+                /* Space between links */
+            }
+            /* When active, display the navbar */
+            
+            .navbar.active {
+                display: flex;
+            }
+            /* Navbar Links */
+            
+            .navbar a {
+                font-size: 1.1em;
+                /* Change to black for visibility */
+                text-decoration: none;
+                padding: 6px 10px;
+                font-weight: 500;
+                transition: 0.5s;
+            }
+            
+            .navbar a {
+                font-size: 1.1em;
+                color: white;
+                text-decoration: none;
+                padding: 6px 20px;
+                font-weight: 500;
+                transition: 0.5s;
+            }
+            /* Navbar Hover Effect */
+            
+            .navbar ul {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+                padding: 0;
+                padding: 10px 20px;
+                border-radius: 10px;
+            }
+            
+            .navbar li {
+                position: relative;
+            }
+            
+            .navbar a::after {
+                content: "";
+                position: absolute;
+                bottom: -3px;
+                left: 50%;
+                width: 0;
+                height: 3px;
+                background: #0ef;
+                border-radius: 5px;
+                transition: all 0.4s ease-in-out;
+                transform: translateX(-50%);
+            }
+            
+            .navbar a:hover::after {
+                width: 100%;
+                /* Expand underline */
+            }
+            
+            .navbar a:hover {
+                color: #0ef;
+                /* Change text color */
+            }
+            
+            .navbar a:hover span {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+            /* Icons (Hidden by Default) */
+            
+            .icon {
+                display: none;
+                font-size: 1.2em;
+                color: #0ef;
+                position: absolute;
+                top: -22px;
+                /* Moves the icon just slightly above the link */
+                left: 50%;
+                transform: translateX(-50%);
+                transition: 0.3s ease-in-out;
+            }
+            /* Active Link (Show Icon Above) */
+            
+            .navbar a.active .icon {
+                display: block;
+            }
+            /* Mobile Styles */
+            
+            @media (max-width: 768px) {
+                .navbar {
+                    display: none;
+                    /* Hide navbar on small screens */
+                    flex-direction: column;
+                }
+                .navbar.active {
+                    display: flex;
+                    /* Show navbar when active */
+                }
+            }
+            
+            .home {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 30px 100px;
+                min-height: 80vh;
+                margin-right: 600px;
+            }
+            
+            .home-container {
+                display: flex;
+                align-items: center;
+                /* Center items vertically */
+                justify-content: flex-start;
+                /* Keep the content to the left */
+                width: 100%;
+                min-height: 100vh;
+                /* Full screen height */
+                padding: 20px;
+                position: relative;
+                /* For absolute positioning of the image */
+            }
+            
+            .typing-container {
+                flex: 1;
+                /* Let typing container take available space */
+                text-align: left;
+                /* Align text to left */
+                position: relative;
+                z-index: 1;
+                /* Ensure text is in front */
+            }
+            
+            #typing-text {
+                font-size: 3rem;
+                color: lightseagreen;
+                font-weight: bold;
+                white-space: nowrap;
+                overflow: hidden;
+                display: inline-block;
+                min-width: 350px;
+                text-shadow: 0 0 2px #fff, 0 0 2px #fff;
+                /* Set a minimum width for the typing text */
+            }
+            
+            .profile-img {
+                position: absolute;
+                /* Position image fixed in place */
+                left: 1000px;
+                /* Align image to the right */
+                width: 250px;
+                /* Set a fixed width for the profile image */
+                height: auto;
+                /* Maintain aspect ratio */
+                z-index: 0;
+                top: 600px;
+                /* Keep image behind the text */
+            }
+            
+            .profile-img img {
+                width: 100%;
+                height: auto;
+                display: block;
+                /* Prevent any unwanted space */
+            }
+            
+            .btn {
+                font-size: 1.5rem;
+                padding: 15px 30px;
+                background: linear-gradient(to right, #C22ED0, #6454F0, #5FFAE0);
+                /* Corrected */
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.3s ease-in-out;
+                transform: translateX(-30px);
+            }
+            
+            .btn:hover {
+                background-color: #008170;
+            }
+            
+            .social-links {
+                display: flex;
+                gap: 20px;
+                /* Space between the icons */
+                margin-top: 20px;
+                /* Space above the social links */
+            }
+            /* Styling the individual icons */
+            
+            .social-links a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50px;
+                /* Width of the hexagon */
+                height: 50px;
+                /* Height of the hexagon */
+                background: linear-gradient(to right, rgba(110, 226, 245, 0.3), rgba(100, 84, 240, 0.3));
+                /* Background color of the hexagon */
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                /* Create hexagon shape */
+                color: white;
+                /* Icon color */
+                font-size: 2rem;
+                /* Adjust icon size */
+                text-decoration: none;
+                /* Remove the underline */
+                transition: all 0.3s ease-in-out;
+                /* Smooth transition */
+                text-shadow: 0 0 2px #fff, 0 0 2px #fff;
+                /* Subtle glowing effect */
+            }
+            /* Glowing Aqua Blue Effect on Hover */
+            
+            .social-links a {
+                margin-bottom: -50px;
+                /* Adjust this value to control how much it moves down */
+                margin-top: 10px;
+                /* Moves it slightly down */
+            }
+            
+            .social-links a:hover {
+                color: white;
+                /* Keep icon color white */
+                background-color: lightblue;
+                /* Darken the background on hover */
+                text-shadow: 0 0 5px #fff, 0 0 8px #fff;
+                /* Slightly stronger glow on hover */
+            }
+            /* .profile-content.typing-text {
+                color: #01a29c;
+                font-size: 3.5em;
+                font-weight: bold;
+                display: inline-block;
+                opacity: 0;
+                animation: fade-in 2s forwards;
+            }
+             */
+            /* About Section */
+            
+            .about {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 30px 100px;
+                margin-top: -100px;
+                gap: 50px;
+                width: 120%;
+                max-width: 14v00px;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+            
+            .about-details {
+                display: flex;
+                /* Enables side-by-side layout */
+                justify-content: space-between;
+                /* Spreads items */
+                margin-top: -20px;
+            }
+            
+            .details-left,
+            .details-right {
+                width: 48%;
+                /* Ensures equal spacing */
+            }
+            
+            .details-left,
+            .details-right {
+                flex-grow: 1;
+            }
+            
+            .about-details p {
+                font-size: 18px;
+                line-height: 1.6;
+                margin: 5px 0;
+                font-style: normal;
+                color: rgba(255, 255, 255, 0.7);
+                width: 100%;
+                margin-top: -60px;
+            }
+            
+            .about-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            .profile-imge {
+                position: relative;
+                width: 390px;
+                height: 360px;
+                right: 30px;
+                top: 80px;
+                margin-bottom: 10px;
+            }
+            
+            .profile-imge img {
+                width: 100%;
+                height: 100%;
+                /* border: 5px solid #01a29c; */
+                /* Main border color */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .profile-imge::after {
+                content: '';
+                position: absolute;
+                top: -1px;
+                left: -2px;
+                width: 105%;
+                height: 105%;
+                border: 9px solid aqua;
+                border-radius: 10px;
+                /* Offset border color */
+                z-index: -1;
+                transform: translate(15px, 20px);
+                /* Offset effect */
+                /* Removed border-radius for a square border */
+            }
+            
+            .about-content {
+                max-width: 50%;
+                margin-right: 100px;
+                margin: -60px auto 0;
+            }
+            
+            .about-content h5 {
+                width: fit-content;
+                /* Centers h5 only */
+                text-align: center;
+                margin-bottom: 70px;
+            }
+            
+            .about-content h2 {
+                font-size: 40;
+                color: lightblue
+                /* Apply gradient */
+            }
+            
+            .about-content p {
+                margin: 20px 0;
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 17px;
+            }
+            
+            .about-content .btn {
+                display: inline-block;
+                /* Makes sure the button respects text alignment */
+                background: linear-gradient(to right, #63E5c5, #0081A7, #6454F0, #5FFAE0);
+                padding: 10px 20px;
+                /* Ensures proper spacing */
+                border: 50px;
+                /* Outer border */
+                cursor: pointer;
+                text-align: center;
+            }
+            
+            .about-content .btn:hover {
+                background: #008170;
+            }
+            
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                background: #474e5d;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            
+            .timeline {
+                max-width: 1100px;
+                margin: 0 auto;
+                position: relative;
+                margin-top: 100px;
+            }
+            
+            .timeline-titles {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 20px;
+                padding: 0 10%;
+            }
+            
+            .left-title {
+                font-size: 24px;
+                font-weight: bold;
+                color: rgba(255, 255, 255, 0.7);
+                /* Orange */
+            }
+            
+            .right-title {
+                font-size: 24px;
+                font-weight: bold;
+                color: lightblue;
+                /* Green */
+            }
+            
+            .timeline::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                width: 6px;
+                background: linear-gradient(145deg, #040b1d, #0a1d3f);
+                left: 50%;
+                margin-left: -3px;
+                box-shadow: 0 0 10px #0a1d3f, 0 0 20px #040b1d;
+                z-index: -1;
+            }
+            
+            .container {
+                padding: 5px 20px;
+                position: relative;
+                width: 50%;
+            }
+            
+            .container::after {
+                content: '';
+                position: absolute;
+                top: 15px;
+                right: -17px;
+                width: 20px;
+                height: 20px;
+                background: #4CA9DF;
+                border-radius: 50%;
+                border: 3px solid #4CA9DF;
+                box-shadow: 0 0 10px #4CA9DF, 0 0 20px #4CA9DF;
+                z-index: 1;
+            }
+            
+            h2 {
+                color: #4CA9DF;
+                /* Blue color */
+                /* Blue color */
+                letter-spacing: 2px;
+                transform: scaleX(1.2);
+                font-size: 20px;
+            }
+            
+            .left {
+                left: 0;
+            }
+            
+            .right {
+                left: 50%;
+            }
+            
+            .right::after {
+                left: -16px;
+            }
+            
+            .left::before {
+                content: '';
+                height: 0px;
+                width: 0px;
+                position: absolute;
+                top: 22px;
+                right: 30px;
+                border: 14px solid #4CA9DF;
+                border-width: 10px 0 10px 10px;
+                border-color: transparent #0a1d3f transparent transparent;
+            }
+            
+            .right::before {
+                content: '';
+                height: 0px;
+                width: 0px;
+                position: absolute;
+                top: 22px;
+                left: 30px;
+                border: 14px solid #4CA9DF;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #0a1d3f transparent transparent;
+            }
+            
+            .content {
+                padding: 20px 30px;
+                /* background: #292E91;
+                                border: 2px solid #D7AFC3; */
+                background: linear-gradient(145deg, #040b1d, #0a1d3f);
+                color: white;
+                /* Default text color */
+                /* border: 2px solid white; */
+                border-radius: 6px;
+                /* Glowing Border */
+                border: 2px solid rgba(72, 133, 237, 0.5);
+                box-shadow: 0 0 10px rgba(72, 133, 237, 0.5);
+                /* animation: glowingBorder 2s infinite alternate; */
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            
+            .content:hover {
+                transform: scale(1.05);
+                /* Slight zoom effect */
+                box-shadow: 0 0 20px rgba(72, 133, 237, 0.8);
+                /* Increase glow on hover */
+            }
+            /* Apply text gradient separately */
+            
+            .content h2 {
+                color: aqua;
+            }
+            
+            .content p {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 15px;
+                text-align: justify;
+            }
+            /* Mobile version */
+            
+            @media screen and (max-width: 600px) {
+                .timeline::after {
+                    left: 31px;
+                }
+                .container {
+                    width: 100%;
+                    padding-left: 70px;
+                    padding-right: 25px;
+                }
+                .container::before {
+                    left: 60px;
+                    border-width: 10px 10px 10px 0;
+                    border-color: transparent #fff transparent transparent;
+                }
+                .left::after,
+                .right::after {
+                    left: 15px;
+                    z-index: 1;
+                }
+                .right {
+                    left: 0;
+                }
+            }
+            /* skill section */
+            
+            .body {
+                font-family: 'Poppins', sans-serif;
+                background-color: #121212;
+                /* color: #fff; */
+                text-align: center;
+                padding: 50px;
+            }
+            
+            h5 {
+                font-size: 35px;
+                margin-bottom: 30px;
+                text-align: center;
+                gap: 30px;
+                margin-top: 100px;
+                /* background: linear-gradient(to right, #FF12A9, #981FFF, #466DFF); */
+                color: #fff;
+            }
+            
+            .skills-container {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 100px;
+                margin-top: 100px;
+            }
+            
+            .skill {
+                position: relative;
+                width: 160px;
+                text-align: center;
+            }
+            
+            .skill-box {
+                position: relative;
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                font-weight: bold;
+                border: 6px solid transparent;
+                background: radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgba(255, 255, 255, 0.05) 100%);
+                margin-left: 80px;
+                margin-top: 20px;
+            }
+            /* Adding skill icons */
+            
+            .skill img {
+                position: absolute;
+                top: -40px;
+                left: 50%;
+                transform: translateX(-50%) rotateY(15deg) rotateX(10deg);
+                /* 3D tilt effect */
+                width: 110px;
+                perspective: 1000px;
+                transform-style: preserve-3d;
+                /* Keeping grayscale effect */
+                filter: grayscale(90%);
+                opacity: 0.2;
+                /* Smooth animation */
+                transition: transform 0.4s ease;
+            }
+            
+            .skill img:hover {
+                transform: translateX(-50%) rotateY(0deg) rotateX(0deg) scale(1.1);
+                /* Slight zoom and straight 3D */
+            }
+            /* Styling the circle fill with gradient */
+            
+            .html .skill-box {
+                background-image: conic-gradient(rgba(186, 0, 33, 0.3) 0% 100%, transparent 98% 100%);
+                /* border-color: rgba(186, 0, 33, 0.5);
+                        color: rgba(186, 0, 33, 0.8); */
+                border-color: rgba(186, 0, 33, 0.5);
+                color: rgba(186, 0, 33, 0.3);
+                perspective: 1000px;
+                transform-style: preserve-3d;
+                transform: rotateX(10deg) rotateY(10deg);
+                /* Adding depth */
+                /* Smooth transition */
+                transition: transform 0.4s ease, box-shadow 0.4s ease;
+            }
+            
+            .html .skill-box:hover {
+                transform: rotateX(0deg) rotateY(0deg) scale(1.05);
+                box-shadow: 10px 10px 20px rgba(186, 0, 33, 0.3), -10px -10px 20px rgba(255, 255, 255, 0.1);
+            }
+            
+            .css .skill-box {
+                background-image: conic-gradient(rgba(0, 102, 178, 0.2) 0% 100%, transparent 98% 100%);
+                border-color: rgba(0, 102, 178, 0.5);
+                color: rgba(0, 102, 178, 0.3);
+            }
+            
+            .js .skill-box {
+                background-image: conic-gradient(rgba(255, 199, 44, 0.2) 0% 100%, transparent 98% 100%);
+                border-color: rgba(255, 199, 44, 0.5);
+                color: rgba(255, 199, 44, 0.1);
+            }
+            
+            .react .skill-box {
+                background-image: conic-gradient(rgba(49, 140, 231, 0.2) 0% 100%, transparent 98% 100%);
+                border-color: rgba(49, 140, 231, 0.5);
+                color: rgba(49, 140, 231, 0.3);
+            }
+            
+            .python .skill-box {
+                background-image: conic-gradient(rgba(108, 180, 238, 0.2) 0% 100%, transparent 98% 100%);
+                border-color: rgba(108, 180, 238, 0.5);
+                color: rgba(108, 180, 238, 0.3);
+            }
+            
+            .java .skill-box {
+                background-image: conic-gradient(rgba(232, 97, 0, 0.2) 0% 100%, transparent 98% 100%);
+                border-color: rgba(232, 97, 0, 0.5);
+                color: rgba(232, 97, 0, 0.3);
+            }
+            
+            .sql .skill-box {
+                background-image: conic-gradient(rgba(69, 44, 99, 0.5) 0% 100%, transparent 98% 100%);
+                border-color: rgba(69, 44, 99, 0.8);
+                color: rgba(69, 44, 99, 0.8);
+            }
+            
+            .django .skill-box {
+                background-image: conic-gradient(rgba(0, 255, 64, 0.2) 0% 100%, transparent 98% 100%);
+                border-color: rgba(0, 255, 64, 0.5);
+                color: rgba(0, 255, 64, 0.3);
+            }
+            /* Target only the skill name */
+            
+            .skill>p {
+                font-size: 16px;
+                font-weight: 600;
+                margin-top: 10px;
+                color: rgba(255, 255, 255, 0.7) !important;
+                /* Ensures the orange applies */
+            }
+            /* Target only the skill description */
+            
+            .skill .skill-description {
+                font-size: 14px;
+                color: #6C757D !important;
+                /* Ensures the gray applies */
+                margin-top: 5px;
+                line-height: 1.4;
+            }
+            /* .skill p {
+                            font-size: 16px;
+                            font-weight: 600;
+                            margin-top: 10px;
+                        }
+                        
+                        .skill-description {
+                            font-size: 14px;
+                            color: #bbb;
+                            margin-top: 5px;
+                            line-height: 1.4;
+                        } */
