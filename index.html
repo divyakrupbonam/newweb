@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile with Typing Animation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: visible;
+        }
+        
+        body {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: url('assets/codioful-formerly-gradienta-OzfD79w8ptA-unsplash.jpg');
+            /* background: linear-gradient(to right, #07142A, #092142, #0F0c29, #02153D, #091120); */
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: url('assets/codioful-formerly-gradienta-OzfD79w8ptA-unsplash.jpg');
+            /* background: linear-gradient(to right, #07142A, #092142, #1d1529, #1E5E98, #3b295a, #5b4381); */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: -1;
+            will-change: transform;
+            transform: translateY(0);
+        }
+        
+        .parallax {
+            background: url('your-image.jpg') no-repeat center center/cover;
+            /* Replace with your actual image */
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            position: relative;
+            /* Important for movement */
+            will-change: transform;
+            /* Improves animation performance */
+        }
+        /* #home {
+            background: url('https://i.pinimg.com/736x/4a/49/98/4a4998914a49b5cf9ba70ae13276c232.jpg') no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        #about {
+            background: url('https://i.pinimg.com/736x/d1/22/b0/d122b0d25443de1f7177aa82a77b0b91.jpg') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+        
+        #skills {
+            background: url('https://source.unsplash.com/1600x900/?coding') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+        
+        #portfolio {
+            background: url('https://source.unsplash.com/1600x900/?technology') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+        
+        #services {
+            background: url('https://source.unsplash.com/1600x900/?business') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+        
+        #contact {
+            background: url('https://source.unsplash.com/1600x900/?networking') no-repeat center center/cover;
+            background-attachment: fixed;
+        } */
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="full-page">
+        <header>
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <h2 class="logo"><span>Di</span>vya.</h2>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#" onclick="toggleIcon(this)"><span class="icon"></span> Home</a></li>
+                    <li><a href="#" onclick="toggleIcon(this)"><span class="icon"></span> About</a></li>
+                    <li><a href="#" onclick="toggleIcon(this)"><span class="icon"></span> Services</a></li>
+                    <li><a href="#" onclick="toggleIcon(this)"><span class="icon"></span> Portfolio</a></li>
+                    <li><a href="#" onclick="toggleIcon(this)"><span class="icon"></span> Contact</a></li>
+                </ul>
+
+
+            </nav>
+        </header>
+
+        <section id="home" class="home">
+            <div class="home-container">
+                <!-- Left Side: Typing Text and Button -->
+                <div class="typing-container">
+                    <h1 id="typing-text"></h1>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 16px; margin-top: 20px; ">
+                    </p>I am a skilled full-stack developer, specializing in both front-end and back-end development.<br>My passion lies in building intuitive, efficient applications and tackling challenging problems <br>to deliver seamless user experiences
+                    </p>
+                    <button class="btn hire-btn">Hire Me</button>
+
+
+                    <div class="social-links">
+                        <p style="color: rgba(255, 255, 255, 0.7); font-size: 20px; margin-top: 20px; ">
+                            Check out my
+                        </p>
+                        <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:your-email@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right Side: Profile Picture -->
+                <div class="profile-img">
+                    <img src="profile.jpg" alt="Profile Picture">
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+    </div>
+    <div class="main-content">
+        <section id="about" class="about">
+            <div class="about-container">
+                <div class="profile-imge">
+                    <img src="passportsize.jpg" alt="Profile Picture ">
+                </div>
+                <div class="about-content">
+                    <h5>About Me</h5>
+                    <h2>Web Developer</h2>
+                    <p>I am a dedicated full-stack developer with expertise in front-end and back-end technologies.I have a passion for creating user-friendly applications and solving complex problems. </p>
+                    <!-- Personal Information Section with Two Columns -->
+                    <div class="about-details">
+                        <div class="details-left">
+                            <p><strong>Name:</strong> Divya Krupa</p>
+                            <p><strong>Degree:</strong> BTech</p>
+                            <p><strong>Phone:</strong> +91 6300616144</p>
+                            <p><strong>Address:</strong> Proddatur, India</p>
+                        </div>
+                        <div class="details-right">
+                            <p><strong>Birthday:</strong> 7th July 2003</p>
+                            <p><strong>Experience:</strong> Fresher</p>
+                            <p><strong>Email:</strong>divyakrupabonam@gmail.com</p>
+                            <p><strong>Address:</strong> Proddatur, India</p>
+
+                        </div>
+                    </div>
+                    <button class="btn download-btn ">Download CV</button>
+                    <button class="btn hire-btn ">Hire Me</button>
+                </div>
+            </div>
+        </section>
+        <!-- < ---Education section---->
+        <section>
+            <h5>Education&Internships</h5>
+            <div class="timeline">
+                <div class="timeline-titles">
+                    <h6 class="left-title ">Education</h6>
+                    <h6 class="right-title ">Internships</h6>
+                </div>
+                <div class="container left">
+                    <div class="content ">
+                        <h2>2021 - 2024</h2>
+                        <h3>Sree Vidyanikethan Engineering College</h3>
+                        <p><strong>Branch:</strong> Information Technology</p>
+                    </div>
+                </div>
+                <div class="container right">
+                    <div class="content">
+                        <h2>2018 - 2020</h2>
+                        <h3>Full Stack Developer Internship</h3>
+                        <p>Developed four interactive web pages—Calculator, Tribute, To-Do List, and Login Page—using HTML, CSS, and JavaScript, enhancing the overall user experience</p>
+                    </div>
+                </div>
+                <div class="container left ">
+                    <div class="content ">
+                        <h2>2020 - 2024</h2>
+                        <h3>Abhyas Junior College, Proddatur</h3>
+                        <p><strong>Branch:</strong>M.P.C</p>
+                    </div>
+                </div>
+                <div class="container right ">
+                    <div class="content ">
+                        <h2>2020 - 2024</h2>
+                        <h3> Salesforce Developer Virtual Internship</h3>
+                        <p> During my virtual internship as a Salesforce developer, I gained hands-on experience in various aspects of the Salesforce platform, including Apex and Lightning technologies.</p>
+                    </div>
+                </div>
+                <div class="container left ">
+                    <div class="content ">
+                        <h2>2020 - 2024</h2>
+                        <h3>St Joseph's Convent Engilsh Medium School </h3>
+                        <p><strong>Branch:</strong> Information Technology</p>
+
+                    </div>
+                </div>
+                <!-- New Right-Side Container -->
+
+            </div>
+
+        </section>
+        <!--skill section--->
+        <section>
+            <h5 style="text-align: center; ">My Skills</h5>
+
+            <p style="text-align: center; margin: 60px 0; position: relative; right: -30px; color: rgba(255, 255, 255, 0.7);font-size: 15px ">
+                My expertise spans across multiple programming languages and frameworks, allowing me to create<br> responsive, dynamic, and efficient web applications.
+            </p>
+
+
+            <div class="skills-container">
+
+                <div class="skill html">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png " alt="HTML ">
+                    <div class="skill-box ">98%</div>
+                    <p>HTML</p>
+                    <p class="skill-description ">Building structured web pages.</p>
+                </div>
+                <div class="skill css ">
+                    <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png " alt="CSS ">
+                    <div class="skill-box ">98%</div>
+                    <p>CSS</p>
+                    <p class="skill-description ">Styling web pages beautifully.</p>
+                </div>
+                <div class="skill js ">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png " alt="JavaScript ">
+                    <div class="skill-box ">98%</div>
+                    <p>JavaScript</p>
+                    <p class="skill-description ">Adding interactivity to websites.</p>
+                </div>
+                <div class="skill react ">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png " alt="React ">
+                    <div class="skill-box ">98%</div>
+                    <p>React</p>
+                    <p class="skill-description ">Building modern UI components.</p>
+                </div>
+                <!-- Second row of skills -->
+                <div class="skills-container ">
+                    <div class="skill python ">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png " alt="Python ">
+                        <div class="skill-box ">98%</div>
+                        <p>Python</p>
+                        <p class="skill-description ">Powerful programming language.</p>
+                    </div>
+                    <div class="skill java ">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968282.png " alt="Java ">
+                        <div class="skill-box ">98%</div>
+                        <p>Java</p>
+                        <p class="skill-description ">Object-oriented programming.</p>
+                    </div>
+                    <div class="skill sql ">
+                        <img src="https://cdn-icons-png.flaticon.com/512/5064/5064826.png " alt="SQL ">
+                        <div class="skill-box ">98%</div>
+                        <p>SQL</p>
+                        <p class="skill-description ">Managing databases efficiently.</p>
+                    </div>
+                    <div class="skill django ">
+                        <img src="https://cdn-icons-png.flaticon.com/512/919/919837.png " alt="Django ">
+                        <div class="skill-box ">98%</div>
+                        <p>Django</p>
+                        <p class="skill-description ">High-level Python web framework.</p>
+                    </div>
+                </div>
+        </section>
+        <section>
+            <h5> My Portfolio</h5>
+
+            <p style="text-align: center; margin: 60px 0; position: relative; right: -1px;color: rgba(255, 255, 255, 0.7); ">
+                I have worked on several exciting projects that demonstrate my expertise in web development<br> backend programming, and database management. Here are some of my key projects
+            </p>
+
+            <div class="card-grid ">
+                <!-- Row 1: Email Slicer & Dream Job -->
+                <div class="card-row ">
+                    <div class="card-block ">
+                        <a href="assets/emailslicer.webp" target="_blank ">
+                            <div class="card ">
+                                <div class="wrapper ">
+                                    <img src="assets/emailslicer.webp" class="cover-image " alt="Email Slicer ">
+                                </div>
+                                <img src="title1.png" class="title " alt="Email Slicer Title ">
+                                <img src="assets/email.png" class="character " alt="Character ">
+                            </div>
+                        </a>
+                        <button class="show-description-btn ">Show Description</button>
+                        <!-- Hidden description -->
+                        <div class="description-card ">
+                            <p>This is the Email Slicer project, a tool to slice emails into useful parts.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-block ">
+                        <a href="assets/onlineplatform.webp " target="_blank ">
+                            <div class="card ">
+                                <div class="wrapper ">
+                                    <img src="assets/onlineplatform.webp " class="cover-image " alt="Online Platform ">
+                                </div>
+                                <img src="05.png " class="title " alt="Dream Job Title ">
+                                <img src="assets/Dreamsjob.png " class="character " alt="Character ">
+                            </div>
+                        </a>
+
+                        <button class="show-description-btn ">Show Description</button>
+                        <!-- Hidden description -->
+                        <div class="description-card ">
+                            <p>This is the Dreams Job Online Platform, helping users find their dream jobs.</p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- Row 2: Image Filter & Expense Tracker -->
+                <div class="card-row">
+                    <div class="card-block">
+                        <a href="assets/shoppingtrend.jpg" target="_blank ">
+                            <div class="card ">
+                                <div class="wrapper ">
+                                    <img src="assets/shoppingtrend.jpg" class="cover-image " alt="Image Filter ">
+                                </div>
+                                <img src="title2.png" class="title " alt="Image Filter Title ">
+                                <img src="assets/ecomercsepng.png" class="character " alt="Character ">
+                            </div>
+                        </a>
+                        <button class=" show-description-btn ">Show Description</button>
+                        <!-- Hidden description -->
+                        <div class="description-card ">
+                            <p>This is the Image Filter project, allowing users to apply various filters to images.</p>
+                        </div>
+                    </div>
+
+                    <div class="card-block ">
+                        <a href="assets/libmanagement.png" target="_blank ">
+                            <div class="card ">
+                                <div class="wrapper ">
+                                    <img src="assets/libmanagement.png" class="cover-image " alt="Expense Tracker ">
+                                </div>
+                                <img src="title3.png " class="title " alt="Expense Tracker Title ">
+                                <img src="assets/Adobe Express - file (1).png" class="character " alt="Character ">
+                            </div>
+                        </a>
+                        <button class="show-description-btn ">Show Description</button>
+                        <!-- Hidden description -->
+                        <div class="description-card ">
+                            <p>This is the Expense Tracker, helping users manage their daily expenses.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--service section-->
+        <section class="service-section ">
+            <h5> My Services</h5>
+
+            <p style="text-align: center; margin: 60px 0; position: relative; right: -1px;color: rgba(255, 255, 255, 0.7); ">
+                I offer a range of digital services tailored to meet your needs, whether you’re looking for creative editing,<br> tech support, or custom coding solutions.
+            </p>
+            <div class="service-container ">
+
+                <div class="service-card ">
+                    <div class="imgBox " data-text="Video ">
+                        <img src="assets/video.png ">
+                    </div>
+                    <div class="content-a ">
+                        <div>
+                            <h3>Video Editing</h3>
+                            <p>Create and enhance videos with professional editing tools for smooth transitions</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card ">
+                    <div class="imgBox " data-text="Android ">
+                        <img src="assets/mobile.png">
+                    </div>
+                    <div class="content-a">
+                        <div>
+                            <h3>Android</h3>
+                            <p>Learn and optimize Android devices for better performance, app management, and customization.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="imgBox" data-text="Desktop Support ">
+                        <img src="assets/desktop.png">
+                    </div>
+                    <div class="content-a">
+                        <div>
+                            <h3>Desktop Support </h3>
+                            <p>Troubleshoot and optimize desktop computers for improved speed, security, and usability.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card ">
+                    <div class="imgBox " data-text="coding ">
+                        <img src="assets/programing.png">
+                    </div>
+                    <div class="content-a ">
+                        <div>
+                            <h3>coding</h3>
+                            <p>Develop websites and applications using modern programming languages and frameworks.</p>
+                            <a href="#">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!--contact-->
+        <!-- Contact Section -->
+        <section>
+            <h5>Contact Me</h5>
+            <div class="contact-container ">
+                <!-- Left side with map and contact details -->
+                <div class="contact-left ">
+                    <h2>Let's get in touch</h2>
+                    <p>We're open for any suggestion or just to have a chat.</p>
+                    <p>📞 6300616144</p>
+                    <p>📧 divkrukrupabonam@gmail.com</p>
+                    <p>📍 2/173-a Buddaipalli, Proddatur, Kadapa, Andhrapradesh</p>
+                    <iframe class="map " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31326.567987464544!2d78.53869445315725!3d14.749154026983551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb41b1d6d93f7bb%3A0x2d7c7f517b0e6c2!2sBuddaipalli%2C%20Proddatur%2C%20Andhra%20Pradesh%20516560!5e0!3m2!1sen!2sin!4v1700000000000 "
+                        allowfullscreen=" " loading="lazy ">
+</iframe>
+                </div>
+
+                <!-- Right side with contact form -->
+                <div class="contact-right ">
+                    <h2 class="contact-title ">Send me a message</h2>
+                    <form>
+                        <input type="text " placeholder="Full Name " required>
+                        <input type="email " placeholder="Email " required>
+                        <textarea placeholder="Message " required></textarea>
+                        <button type="submit ">SEND MESSAGE</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-left">
+                    <h3>About Me</h3>
+                    <p>I'm always excited to connect and collaborate. Let's create something amazing together!</p>
+                </div>
+
+                <div class="footer-center">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-right">
+                    <h3>Follow Me</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="footer-bottom">&copy; 2025 Divya Krupa. All rights reserved.</p>
+        </footer>
+
+
+        <div class="parallax ">Parallax Background</div>
+
+
+        <script src="script.js"></script>
+        <script src="main.js"></script>
+</body>
+
+</html>
